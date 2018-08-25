@@ -1,4 +1,5 @@
-var link = 'https://levelup-assessment-backend-odvoreherl.now.sh/api/';
+// Use the JSON schema returned from the API to dynamically build the form
+let link = 'https://levelup-assessment-backend-odvoreherl.now.sh/api/';
 
 $.ajax({
   url: link + 'getFormSchema',
@@ -22,4 +23,31 @@ $.ajax({
   error: function(error) {
     console.log(error);
   }
+});
+
+
+// SUBMITING THE FORM AS A JSON OBJECT
+
+// 1.Get the form data as array and json stringify it.
+$( "#level-up-form" ).submit(function( event ) {
+  event.preventDefault();
+  // console.log( $( this ).serializeArray() );
+  let formData = JSON.stringify( $( this ).serializeArray() );
+  // console.log( formData );
+
+  // 2.Setting the ajax request
+  $.ajax({
+    type: 'POST',
+    url: link + 'submission',
+    data: formData,
+    success: function(){
+      console.log('Your form submited successfully!');
+    },
+    error: function(error) {
+      console.log(error);
+    },
+    dataType: 'json',
+    contentType : 'application/json'
+  });
+
 });
