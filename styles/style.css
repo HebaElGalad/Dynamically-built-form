@@ -1,3 +1,8 @@
+/* === COLORS PALETTE ===
+  LIGHT BLUE:#03a9f5;
+  LIGHT-VIOLET:#BAA7DD;
+*/
+
 /* Normalize */
 html {
   box-sizing: border-box;
@@ -7,4 +12,74 @@ html {
 *::before,
 *::after {
   box-sizing: inherit;
+}
+
+/* Main Styles */
+body {
+  background-color: #eaeaea;
+  color: #fff;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  padding: 1em;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 35vw;
+  margin: 0 auto;
+}
+
+.wrapper {
+  background: linear-gradient(#8ca6db, #b993d6);
+  padding: 1em;
+  border-radius: 8px;
+  box-shadow: 0 0 20px 0 rgba(72, 94, 116, 0.7);
+}
+
+h1 {
+  text-align: center;
+}
+
+/* FORM STYLES */
+#level-up-form {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+label[for="submit"],
+label[for="secret"] {
+  display: none;
+}
+
+#level-up-form label {
+  padding: 0px;
+  margin: 0.5em 0em;
+}
+
+#level-up-form > * {
+  width: 80%;
+}
+
+#level-up-form input {
+  padding: 1em;
+  border: 1px solid #fff;
+  border-radius: 6px;
+  background-color: transparent;
+}
+
+#level-up-form input[type="submit"] {
+  margin: 2em 0em;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #8ca6db;
+  border: 1px solid #fff;
+  border-radius: 25px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+#level-up-form input[type="submit"]:hover {
+  background-color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  transition: background-color 1s ease-out;
 }
