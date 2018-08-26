@@ -24,7 +24,7 @@ body {
 }
 
 .container {
-  max-width: 35vw;
+  max-width: 35vmax;
   margin: 0 auto;
 }
 
@@ -87,4 +87,41 @@ label[for="secret"] {
   background-color: rgba(255, 255, 255, 0.6);
   cursor: pointer;
   transition: background-color 1s ease-out;
+}
+
+/* === CSS MEDIA QUERIES === */
+/* Tablets, Ipads */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .container {
+    max-width: 60vmax;
+    margin: 0 auto;
+  }
+
+  #level-up-form > * {
+    width: 80%;
+  }
+}
+
+/* Tablets, Mobiles (Landscape) */
+@media (min-width: 481px) and (max-width: 767px) {
+  .container {
+    max-width: 70vmax;
+    margin: 0 auto;
+  }
+
+  #level-up-form > * {
+    width: 75%;
+  }
+}
+
+/* Smartphones Mobiles */
+@media (min-width: 320px) and (max-width: 480px) {
+  .container {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  #level-up-form > * {
+    width: 100%;
+  }
 }
