@@ -31,15 +31,21 @@ $.ajax({
 // 1.Get the form data as array and json stringify it.
 $( "#level-up-form" ).submit(function( event ) {
   event.preventDefault();
-  // console.log( $( this ).serializeArray() );
-  let formData = JSON.stringify( $( this ).serializeArray() );
+  let formData = $( this ).serializeArray();
   // console.log( formData );
+
+  let jsonObject = {};
+  for(let i = 0; i < formData.length; i++) {
+    let key = formData[i].name;
+    jsonObject[key] = formData[i].value;
+  }
+  // console.log( jsonObject );
 
   // 2.Setting the ajax request
   $.ajax({
     type: 'POST',
     url: link + 'submission',
-    data: formData,
+    data: jsonObject,
     success: function(){
       console.log('Your form submited successfully!');
     },
