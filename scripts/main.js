@@ -1,4 +1,4 @@
-// Use the JSON schema returned from the API to dynamically build the form
+// USE THE JSON SCHEMA RETURNED FROM THE API TO DYNAMICALLY BUILD THE FORM
 let link = 'https://levelup-assessment-backend-ddmwdsdlta.now.sh/api/';
 
 $.ajax({
@@ -13,22 +13,18 @@ $.ajax({
       let inputValue = data[key].value;
 
       appedndData += `<label for='${lable}'>${lable}</label>`;
-      if (inputType === 'checkbox') {
-        appedndData += `<input type='${inputType}' name='${lable}' id='${lable}' value=${JSON.parse(inputValue)} />`;
-      } else {
-        appedndData += `<input type='${inputType}' name='${lable}' id='${lable}' value='${inputValue}' />`;
-      }
+      appedndData += `<input type='${inputType}' name='${lable}' id='${lable}' value='${inputValue}' />`;
 
       $('#level-up-form').append(appedndData);
     }
     
-    // $(document).ready(function() {
-    //   let stringValue = $('#final_submission').val();
-    //   $('#final_submission').attr( 'value', JSON.parse(stringValue) );
-    //   console.log(JSON.parse(stringValue));
-    // });
+    // RESET THE CHECKBOX VALUE
+    $(document).ready(function() {
+      $('#final_submission').attr( 'value', null);
+    });
 
-    console.log(data);
+    // console.log(data);
+
   },
   error: function(error) {
     console.log(error);
@@ -50,21 +46,23 @@ $( "#level-up-form" ).submit(function( event ) {
     let key = formData[i].name;
     jsonObject[key] = formData[i].value;
   }
-  console.log( jsonObject );
+  // console.log(jsonObject);
 
   // 2.Setting the ajax request
-  // $.ajax({
-  //   type: 'POST',
-  //   url: link + 'submission',
-  //   data: jsonObject,
-  //   success: function(){
-  //     console.log('Your form submited successfully!');
-  //   },
-  //   error: function(error) {
-  //     console.log(error);
-  //   },
-  //   dataType: 'json',
-  //   contentType : 'application/json'
-  // });
+  $.ajax({
+    type: 'POST',
+    headers: {
+      'Content-Type' : 'application/json; charset=utf-8'
+    },
+    url: link + 'submission',
+    data:  JSON.stringify(jsonObject),
+    success: function(){
+      console.log('Your form submited successfully!');
+    },
+    error: function(error) {
+      console.log(error);
+    },
+    dataType: 'json'
+  });
 
 });
