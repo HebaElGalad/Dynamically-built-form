@@ -20,7 +20,7 @@ $.ajax({
     
     // RESET THE CHECKBOX VALUE
     $(document).ready(function() {
-      $('#final_submission').attr( 'value', null);
+      $('#final_submission').attr( 'value', true);
     });
 
     // console.log(data);
